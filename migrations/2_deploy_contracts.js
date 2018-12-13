@@ -1,8 +1,10 @@
 var SecretBallot = artifacts.require("SecretBallot");
+var Web3 = require("web3");
+
 module.exports = function(deployer) {
     deployer.deploy(SecretBallot, [
-        web3.utils.fromAscii('John'),
-        web3.utils.fromAscii('Jeff'),
-        web3.utils.fromAscii('Jim'),
+        Web3.utils.asciiToHex('John'),
+        Web3.utils.asciiToHex('Jeff'),
+        Web3.utils.asciiToHex('Jim'),
     ])
 };
