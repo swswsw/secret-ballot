@@ -44,9 +44,14 @@ window.refreshVoteTotals = async function () {
 }
 
 window.refreshBidResult = async function () {
-  let totalVotes = await SecretBallot.methods.highestBid().call();
-  $("#bid-result-address").html(totalVotes[0]);
-  $("#bid-result-amount").html(totalVotes[1]);
+  try {
+    let totalVotes = await SecretBallot.methods.highestBid().call();
+    $("#bid-result-address").html(totalVotes[0]);
+    $("#bid-result-amount").html(totalVotes[1]);
+  } catch (err) {
+    $("#vote-status-alert").text("result is hidden until bid ends.  Error: " + err);
+    //console.log(err);
+  }
 }
 
 window.endVoting = async function () {

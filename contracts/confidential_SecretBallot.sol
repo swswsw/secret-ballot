@@ -81,6 +81,8 @@ contract SecretBallot {
     }
 
     function highestBid() view public returns (address, uint256) {
+        // this method can only be called after voting ended
+        require(votingEnded);  // Don't reveal votes until voting has ended
         return (highestBidAddress, highestBidAmount);
     }
 
