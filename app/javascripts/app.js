@@ -43,6 +43,12 @@ window.refreshVoteTotals = async function () {
     }
 }
 
+window.refreshBidResult = async function () {
+  let totalVotes = await SecretBallot.methods.highestBid().call();
+  $("#bid-result-address").html(totalVotes[0]);
+  $("#bid-result-amount").html(totalVotes[1]);
+}
+
 window.endVoting = async function () {
   let end = SecretBallot.methods.endVoting();
   let success = await end.send();
@@ -61,6 +67,18 @@ window.voteForCandidate = async function (candidateName) {
     let vote = SecretBallot.methods.voteForCandidate(web3c.utils.fromAscii(candidateName));
     await  vote.send();
     refreshVoteTotals();
+  } catch (err) {
+    $("#vote-status-alert").text("Error: " + err);
+    console.log(err);
+  }
+}
+
+window.bid = async function (amount) {
+  try {
+    let bidding = SecretBallot.methods.bid(amount);
+    await  bidding.send();
+    refreshVoteTotals();
+    refreshBidResult();
   } catch (err) {
     $("#vote-status-alert").text("Error: " + err);
     console.log(err);
@@ -140,6 +158,7 @@ async function runAt(address) {
     }
 
     refreshVoteTotals();
+    refreshBidResult();
 }
 
 function load() {

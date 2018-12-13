@@ -16,12 +16,46 @@ contract SecretBallot {
     // Tallies for each candidate
     mapping (bytes32 => uint256) private votesReceived;
 
+    // keep track of the bids from each address
+    mapping (address => uint256) private bids;
+
+    // keep track of the amount of eth they submitted
+    // they have to submit somthing higher, then later on, it will be refunded.
+    mapping (address => uint256) private deposits;
+
+    // highest bid address
+    address private highestBidAddress;
+
+    // highest bid amount
+    uint256 private highestBidAmount = 0;
+
     // The total number of votes cast so far. Revealed before voting has ended.
     uint256 public totalVotes;
 
     constructor(bytes32[] _candidateNames) public {
         ballotCreator = msg.sender;
         candidateNames = _candidateNames;
+    }
+
+    function bid(uint256 amount) public payable {
+        // can only vote during voting period
+        require(!votingEnded);
+        // candidate must be part of the ballot
+        //require(validCandidate(candidate));
+        // one bid per address
+        require(!hasVoted[msg.sender]);
+        // prevent overflow
+
+        bids[msg.sender] = amount;
+        deposits[msg.sender] = msg.value;
+
+        if (amount > highestBidAmount) {
+            highestBidAmount = amount;
+            highestBidAddress = msg.sender;
+        }
+
+        hasVoted[msg.sender] = true;
+        totalVotes += 1;
     }
 
     function voteForCandidate(bytes32 candidate) public {
@@ -44,6 +78,10 @@ contract SecretBallot {
         require(msg.sender == ballotCreator);  // Only ballot creator can end the vote.
         votingEnded = true;
         return true;
+    }
+
+    function highestBid() view public returns (address, uint256) {
+        return (highestBidAddress, highestBidAmount);
     }
 
     function totalVotesFor(bytes32 candidate) view public returns (uint256) {

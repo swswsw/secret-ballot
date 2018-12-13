@@ -20,6 +20,8 @@ Squirtle
     <center>
         <div><b>Voting:</b>&nbsp;&nbsp;<span id="voting-status">Loading...</span></div>
         <div><b>Total votes:</b>&nbsp;&nbsp;<span id="total-votes"></span></div>
+        <div><b>Bid winner:</b>&nbsp;&nbsp;<span id="bid-result-address"></span></div>
+        <div><b>Bid winning amount:</b>&nbsp;&nbsp;<span id="bid-result-amount"></span></div>
         <div class="alert alert-info wallet-div hidden" id="wallet-div">
             <div><b>Your wallet address</b>
                 <div id="wallet-address"></div>
@@ -40,6 +42,9 @@ Squirtle
             <div><em>Votes are hidden until voting has ended.</em></div><br/>
             <a id="end-vote" onclick="endVoting()" class="btn btn-lg btn-danger">End Voting</a>
             <div>(Can only be called by ballot creator)</div>
+        </div>
+        <div id="bidding-div">
+            <div><button class="btn btn-primary vote-button" onclick="bid(10000)">Bid</button></div>
         </div>
     </center>
 </div>
