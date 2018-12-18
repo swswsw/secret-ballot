@@ -38,8 +38,10 @@ window.refreshVoteTotals = async function () {
 
     if (!hasVoted && !votingEnded) {
       $(".vote-button").removeClass("hidden");
+      $("#bid-input-div").removeClass("hidden");
     } else {
       $(".vote-button").addClass("hidden");
+      $("#bid-input-div").addClass("hidden");
     }
 }
 
