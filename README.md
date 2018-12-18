@@ -1,7 +1,6 @@
-# Secret Ballot dApp
+# Blind Auction (Sealed-bid Auction) dapp
 
-This dApp demonstrates confidentiality using a voting smart contract that keeps each user's vote private and hides
-vote tallies until voting has ended. It serves as an example app for our Web3(c) library.
+This dApp demonstrates ability to bid confidentially in a blind auction.  In a blind auction, every bidders puts in a bid.  Bidders do not know their fellow's bids.  The highest bid winner is revealed when the auction ends.
 
 To interact with this dApp locally follow the steps below.
 
@@ -12,7 +11,7 @@ To interact with this dApp locally follow the steps below.
 * To modify the contract, run `npm install -g truffle`
 
 ## Building & Deploying the Smart Contract
-To build a new ballot, run:
+To build a new auction, run:
 
 * `truffle compile`
 
@@ -33,7 +32,7 @@ Running migration: 2_deploy_contracts.js
   SecretBallot: 0x1dd2838d8290dd83d5d060d1b3d2cc1eae0ac5f7
 ```
 
-In this example the ballot was deployed to address `0x1dd2838d8290dd83d5d060d1b3d2cc1eae0ac5f7`
+In this example the auction was deployed to address `0x1dd2838d8290dd83d5d060d1b3d2cc1eae0ac5f7`
 
 ## Interacting with the dApp
 
@@ -46,4 +45,4 @@ In this example the ballot was deployed to address `0x1dd2838d8290dd83d5d060d1b3
 * If you don't see anything in the web browser, ensure your Metamask is unlocked and configured for the Oasis testnet
 * Due to rate limiting the web UI doesn't always display complete information. If the page doesn't fully populate you may
 need to wait a few seconds and refresh the page
-* To change the ballot options, edit `migrations/2_deploy_contracts.js` then re-deploy using the instructions above
+* To change the auction options, edit `migrations/2_deploy_contracts.js` then re-deploy using the instructions above
