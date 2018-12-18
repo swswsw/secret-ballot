@@ -97,6 +97,18 @@ h3 {
   padding-top:10px;
 }
 
+#bid-amount {
+  width: 10em;
+}
+
+#bid-input-div {
+  background-color: lightcyan;
+  width: 500px;
+  margin: 15px;
+  padding: 15px;
+  font-size: 20px;
+}
+
 .blinking{
   animation:blinkingText 0.8s infinite;
 }

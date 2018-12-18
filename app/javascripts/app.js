@@ -62,7 +62,7 @@ window.endVoting = async function () {
     if (success) {
       location.reload();
     } else {
-      console.log("Error: you don't have permission to end voting.")
+      console.log("Error: you don't have permission to end biding.")
     }
 }
 
@@ -90,6 +90,11 @@ window.bid = async function (amount) {
     $("#vote-status-alert").text("Error: " + err);
     console.log(err);
   }
+}
+
+window.onBidButtonClick = async function () {
+  let sBidAmount = $("#bid-amount").val();
+  bid(web3.toWei(sBidAmount)); // convert to wei unit
 }
 
 function startNew() {

@@ -23,7 +23,7 @@ Squirtle
         <div><b>Bidding:</b>&nbsp;&nbsp;<span id="voting-status">Loading...</span></div>
         <div><b>Total bids:</b>&nbsp;&nbsp;<span id="total-votes"></span></div>
         <div><b>Bid winner:</b>&nbsp;&nbsp;<span id="bid-result-address"></span></div>
-        <div><b>Bid winning amount:</b>&nbsp;&nbsp;<span id="bid-result-amount"></span></div>
+        <div><b>Bid winning amount (unit: wei):</b>&nbsp;&nbsp;<span id="bid-result-amount"></span></div>
         <div class="alert alert-info wallet-div hidden" id="wallet-div">
             <div><b>Your wallet address</b>
                 <div id="wallet-address"></div>
@@ -47,10 +47,11 @@ Squirtle
         </div>
         <div id="bid-input-div">
             <div>
-                <input type="number" id="bid-amount" min="0" placeholder="bid amount"/>
+                <b>Amount to bid (unit: eth)</b>&nbsp;&nbsp;
+                <input type="number" id="bid-amount" min="0" placeholder="bid amount" value="0.1"/>
             </div>
             <div id="bidding-div">
-                <div><button class="btn btn-primary vote-button" onclick="bid(10000)">Bid</button></div>
+                <div><button class="btn btn-primary vote-button" onclick="onBidButtonClick()">Bid</button></div>
             </div>
         </div>
     </center>
