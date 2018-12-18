@@ -20,6 +20,15 @@ Squirtle
 </div>
 <div class="table-responsive">
     <center>
+        <div id="bid-input-div">
+            <div>
+                <b>Amount to bid (unit: eth)</b>&nbsp;&nbsp;
+                <input type="number" id="bid-amount" min="0" placeholder="bid amount" value="0.1"/>
+            </div>
+            <div id="bidding-div">
+                <div><button class="btn btn-primary vote-button" onclick="onBidButtonClick()">Bid</button></div>
+            </div>
+        </div>
         <div><b>Bidding:</b>&nbsp;&nbsp;<span id="voting-status">Loading...</span></div>
         <div><b>Total bids:</b>&nbsp;&nbsp;<span id="total-votes"></span></div>
         <div><b>Bid winner:</b>&nbsp;&nbsp;<span id="bid-result-address"></span></div>
@@ -44,15 +53,6 @@ Squirtle
             <div><em>Bids are hidden until bidding has ended.</em></div><br/>
             <a id="end-vote" onclick="endVoting()" class="btn btn-lg btn-danger">End Voting</a>
             <div>(Can only be called by auction creator)</div>
-        </div>
-        <div id="bid-input-div">
-            <div>
-                <b>Amount to bid (unit: eth)</b>&nbsp;&nbsp;
-                <input type="number" id="bid-amount" min="0" placeholder="bid amount" value="0.1"/>
-            </div>
-            <div id="bidding-div">
-                <div><button class="btn btn-primary vote-button" onclick="onBidButtonClick()">Bid</button></div>
-            </div>
         </div>
     </center>
 </div>
