@@ -31,9 +31,9 @@ window.refreshVoteTotals = async function () {
 
     $("#vote-status-alert").removeClass("blinking");
     if (hasVoted) {
-      $("#vote-status-alert").text("Your vote has been registered.")
+      $("#vote-status-alert").text("Your bid has been registered.")
     } else {
-      $("#vote-status-alert").text("You have not voted yet.")
+      $("#vote-status-alert").text("You have not bid yet.")
     }
 
     if (!hasVoted && !votingEnded) {

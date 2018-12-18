@@ -6,20 +6,22 @@
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
 </head>
 <body class="container">
-<center><h1>Oasis Secret Ballot dApp</h1></center>
+<center><h1>Oasis Blind Auction (Sealed Bid) dApp</h1></center>
 <div id="new-ballot" class="hidden center">
-    <textarea id="candidates" rows=5>
+    <input type="text" id="auction-name" placeholder="Auction Item Name"/>
+    <br/>
+    <textarea id="candidates" rows="5" class="hidden">
 Bulbasaur
 Charmander
 Squirtle
     </textarea> <br />
-    <a onclick="deploy()" class="btn btn-lg btn-danger">Create ballot.</a><br />
+    <a onclick="deploy()" class="btn btn-lg btn-danger">Create auction.</a><br />
     <span id="deploy-status"></span>
 </div>
 <div class="table-responsive">
     <center>
-        <div><b>Voting:</b>&nbsp;&nbsp;<span id="voting-status">Loading...</span></div>
-        <div><b>Total votes:</b>&nbsp;&nbsp;<span id="total-votes"></span></div>
+        <div><b>Bidding:</b>&nbsp;&nbsp;<span id="voting-status">Loading...</span></div>
+        <div><b>Total bids:</b>&nbsp;&nbsp;<span id="total-votes"></span></div>
         <div><b>Bid winner:</b>&nbsp;&nbsp;<span id="bid-result-address"></span></div>
         <div><b>Bid winning amount:</b>&nbsp;&nbsp;<span id="bid-result-amount"></span></div>
         <div class="alert alert-info wallet-div hidden" id="wallet-div">
@@ -28,7 +30,7 @@ Squirtle
             </div>
             <div id="vote-status-alert">Getting vote status...</div>
         </div>
-        <table class="table table-borderless table-striped" id="ballot-table">
+        <table class="table table-borderless table-striped hidden" id="ballot-table">
             <thead>
             <tr>
                 <th>Candidate</th>
@@ -43,8 +45,13 @@ Squirtle
             <a id="end-vote" onclick="endVoting()" class="btn btn-lg btn-danger">End Voting</a>
             <div>(Can only be called by ballot creator)</div>
         </div>
-        <div id="bidding-div">
-            <div><button class="btn btn-primary vote-button" onclick="bid(10000)">Bid</button></div>
+        <div id="bid-input-div">
+            <div>
+                <input type="number" id="bid-amount" min="0" placeholder="bid amount"/>
+            </div>
+            <div id="bidding-div">
+                <div><button class="btn btn-primary vote-button" onclick="bid(10000)">Bid</button></div>
+            </div>
         </div>
     </center>
 </div>
