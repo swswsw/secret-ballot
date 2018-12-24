@@ -46,3 +46,6 @@ In this example the auction was deployed to address `0x1dd2838d8290dd83d5d060d1b
 * Due to rate limiting the web UI doesn't always display complete information. If the page doesn't fully populate you may
 need to wait a few seconds and refresh the page
 * To change the auction options, edit `migrations/2_deploy_contracts.js` then re-deploy using the instructions above
+
+# 
+This dapp is based on the secret-ballot dapp from https://github.com/oasislabs/secret-ballot
